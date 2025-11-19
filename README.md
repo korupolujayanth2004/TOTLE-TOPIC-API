@@ -1,4 +1,3 @@
-````markdown name=README.md url=https://github.com/korupolujayanth2004/TOTLE-TOPIC-API/blob/main/README.md
 TOTLE TOPIC API — Coding Round Submission
 
 # Backend Developer Intern — Round 1
@@ -120,4 +119,3 @@ https://github.com/korupolujayanth2004/TOTLE-TOPIC-API
 ## 👨‍💻 Author
 
 Korupolu Jayanth
-````
