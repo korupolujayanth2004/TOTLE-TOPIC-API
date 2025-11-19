@@ -1,0 +1,26 @@
+{
+  "name": "totle-topic-retrieval-api",
+  "version": "1.0.0",
+  "description": "Backend Developer Intern Round 1 - Topic Retrieval API (Node.js + Express)",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "api",
+    "topics",
+    "totle",
+    "internship"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
