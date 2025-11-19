@@ -39,20 +39,65 @@ A simple RESTful API for managing topics used by the TOTLE project. This reposit
 
 ## Usage
 
-The API serves JSON endpoints. Example endpoints (adjust paths to match the implementation in this repo):
+The API serves JSON endpoints under /api. Example endpoints (adjust paths to match the implementation in this repo):
 
-- GET /topics           - List all topics
-- GET /topics/:id       - Get a single topic by id
-- POST /topics          - Create a new topic
-- PUT /topics/:id       - Update a topic
-- DELETE /topics/:id    - Delete a topic
+- GET /api/topics           - List all topics
+- GET /api/topics/:id       - Get a single topic by id
+- POST /api/topics          - Create a new topic
+- PUT /api/topics/:id       - Update a topic
+- DELETE /api/topics/:id    - Delete a topic
 
 Example cURL request to create a topic:
 
-curl -X POST http://localhost:3000/topics \
+curl -X POST http://localhost:3000/api/topics \
   -H "Content-Type: application/json" \
-  -d '{"title":"Example topic","description":"A short description"}'
+  -d '{"name":"Example topic","category":"General","description":"A short description"}'
 
+## Example API responses
+
+Below are real example requests and responses from a running instance (localhost:3000) to demonstrate search and sorting behavior.
+
+1) Search for "api":
+
+GET http://localhost:3000/api/topics?search=api
+
+```json
+[{"id":6,"name":"REST API Principles","category":"Backend"}]
+```
+
+2) Search for "backend" and sort by name:
+
+GET http://localhost:3000/api/topics?search=backend&sort=name
+
+```json
+[
+    {
+        "id": 3,
+        "name": "Express Routing",
+        "category": "Backend"
+    },
+    {
+        "id": 2,
+        "name": "Node.js Fundamentals",
+        "category": "Backend"
+    },
+    {
+        "id": 6,
+        "name": "REST API Principles",
+        "category": "Backend"
+    }
+]
+```
+
+3) Search for "backend" (default ordering):
+
+GET http://localhost:3000/api/topics?search=backend
+
+```json
+[{"id":2,"name":"Node.js Fundamentals","category":"Backend"},{"id":3,"name":"Express Routing","category":"Backend"},{"id":6,"name":"REST API Principles","category":"Backend"}]
+```
+
+These examples show how the search endpoint filters topics by the provided query and how an optional sort parameter can change the returned ordering.
 
 ## Environment Variables
 
