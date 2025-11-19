@@ -1,125 +1,125 @@
-# TOTLE-TOPIC-API
+TOTLE TOPIC API — Coding Round Submission
 
-A simple RESTful API for managing topics used by the TOTLE project. This repository provides the server-side endpoints, example requests, and setup instructions to run the API locally.
+Backend Developer Intern — Round 1
 
-## Features
+This repository contains my solution to the Totle Backend Developer Intern coding assignment.
+The task was to build a simple Topic Retrieval API using Node.js + Express, reading data from a JSON file and supporting search and optional sorting.
 
-- CRUD endpoints for topics
-- JSON request/response format
-- Simple configuration via environment variables
+🚀 Features Implemented
+✔ GET /api/topics?search=<query>
 
-## Requirements
+Search topics by name or category, case-insensitive.
 
-- Node.js 14+ (or compatible)
-- npm or yarn
+✔ Optional Sorting
 
-## Installation
+&sort=name → sort results alphabetically by name.
 
-1. Clone the repository:
+✔ Proper Error Handling
 
-   git clone https://github.com/korupolujayanth2004/TOTLE-TOPIC-API.git
-   cd TOTLE-TOPIC-API
+Missing search → 400
 
-2. Install dependencies:
+File or server error → 500
 
-   npm install
-   # or
-   yarn install
+✔ Clean folder structure
+✔ Uses topics.json as data source
+✔ Bonus: Search checks both name & category
 
-3. Create a .env file (example values):
+📂 Project Folder Structure
 
-   PORT=3000
-   NODE_ENV=development
-   DATABASE_URL="sqlite://./dev.db" # or your preferred DB URL
+TOTLE-TOPIC-API/
+├── README.md
+├── .gitignore
+├── package.json
+└── src/
+    ├── app.js
+    ├── routes/
+    │   └── topics.js
+    └── data/
+        └── topics.json
 
-4. Run migrations (if any) and start the server:
+🛠 Installation & Setup
 
-   npm run migrate
-   npm start
+npm install
 
-## Usage
+npm start
 
-The API serves JSON endpoints under /api. Example endpoints (adjust paths to match the implementation in this repo):
 
-- GET /api/topics           - List all topics
-- GET /api/topics/:id       - Get a single topic by id
-- POST /api/topics          - Create a new topic
-- PUT /api/topics/:id       - Update a topic
-- DELETE /api/topics/:id    - Delete a topic
+Server runs at:
 
-Example cURL request to create a topic:
+http://localhost:3000
 
-curl -X POST http://localhost:3000/api/topics \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Example topic","category":"General","description":"A short description"}'
+🔍 API Usage
 
-## Example API responses
-
-Below are real example requests and responses from a running instance (localhost:3000) to demonstrate search and sorting behavior.
-
-1) Search for "api":
+1. Search topics
 
 GET http://localhost:3000/api/topics?search=api
 
-```json
-[{"id":6,"name":"REST API Principles","category":"Backend"}]
-```
 
-2) Search for "backend" and sort by name:
+Example Output
+
+[
+  {
+    "id": 6,
+    "name": "REST API Principles",
+    "category": "Backend"
+  }
+]
+
+2. Search + Sort
 
 GET http://localhost:3000/api/topics?search=backend&sort=name
 
-```json
-[
-    {
-        "id": 3,
-        "name": "Express Routing",
-        "category": "Backend"
-    },
-    {
-        "id": 2,
-        "name": "Node.js Fundamentals",
-        "category": "Backend"
-    },
-    {
-        "id": 6,
-        "name": "REST API Principles",
-        "category": "Backend"
-    }
-]
-```
+3. Invalid Search
 
-3) Search for "backend" (default ordering):
+GET http://localhost:3000/api/topics
 
-GET http://localhost:3000/api/topics?search=backend
 
-```json
-[{"id":2,"name":"Node.js Fundamentals","category":"Backend"},{"id":3,"name":"Express Routing","category":"Backend"},{"id":6,"name":"REST API Principles","category":"Backend"}]
-```
+Output:
 
-These examples show how the search endpoint filters topics by the provided query and how an optional sort parameter can change the returned ordering.
+{
+  "error": "Invalid query. Please provide a non-empty \"search\" query parameter."
+}
 
-## Environment Variables
+📘 Step-by-Step Workflow (Required by Totle)
 
-Document any environment variables your app uses (example):
+Client sends request to /api/topics with the search parameter.
 
-- PORT - port to run the server (default: 3000)
-- DATABASE_URL - connection string for the database
+Server validates that the search term is not empty.
 
-## Tests
+JSON file topics.json is read asynchronously.
 
-If tests exist, run them with:
+The search term is converted to lowercase.
 
-npm test
+Topics are filtered where name or category contains the query.
 
-## Contributing
+If sort=name is passed, results are sorted alphabetically.
 
-Contributions are welcome. Please open an issue for discussion or submit a pull request with a clear description of changes and tests when appropriate.
+Final output returns { id, name, category } only.
 
-## License
+400 errors are returned for bad input; 500 for internal failures.
 
-Specify a license for the project (e.g., MIT). If no license is chosen, include a LICENSE file or update this section accordingly.
+🎥 2-Minute Video Explanation
 
-## Contact
+Video Link:
 
-Created by korupolujayanth2004. For questions or feedback, open an issue on this repository.
+https://drive.google.com/file/d/1TzaVjxfU9q5LdiaKCFoaR7vX1N-DLjCg/view?usp=sharing
+
+(or place video in ZIP as required)
+
+🔗 GitHub Repository Link
+
+https://github.com/korupolujayanth2004/TOTLE-TOPIC-API
+
+📦 What is Included in the ZIP (as required)
+
+Source code + folder structure
+
+README
+
+2-minute explanation video
+
+GitHub repo link
+
+👨‍💻 Author
+
+Korupolu Jayanth
