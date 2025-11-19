@@ -104,8 +104,6 @@ Video Link:
 
 https://drive.google.com/file/d/1TzaVjxfU9q5LdiaKCFoaR7vX1N-DLjCg/view?usp=sharing
 
-(or place video in ZIP as required)
-
 🔗 GitHub Repository Link
 
 https://github.com/korupolujayanth2004/TOTLE-TOPIC-API
